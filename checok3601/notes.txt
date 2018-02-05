@@ -1,0 +1,13 @@
+the frames show after click only
+it has 9 valid frames
+frame no 8 and 10 is dummy frames
+
+the source 0:http://192.168.2.17:99/Web/Case/CaseInformationPage/AddressCaseInformationPage.aspx
+the source 1:http://192.168.2.17:99/Web/Case/CaseInformationPage/EducationCaseInformationPage.aspx
+the source 2:http://192.168.2.17:99/Web/Case/CaseInformationPage/EmploymentCaseInformationPage.aspx
+the source 3:http://192.168.2.17:99/Web/Case/CaseInformationPage/ReferenceCaseInformationPage.aspx
+the source 4:http://192.168.2.17:99/Web/Case/CaseInformationPage/DataBaseCaseInformationPage.aspx
+the source 5:http://192.168.2.17:99/Web/Case/CaseInformationPage/CriminalCaseInformationPage.aspx
+the source 6:http://192.168.2.17:99/Web/Case/CaseInformationPage/CreditCaseInformationPage.aspx
+the source 7:http://192.168.2.17:99/Web/Case/CaseInformationPage/CourtCaseInformationPage.aspx
+the source 9:http://192.168.2.17:99/Web/Case/CaseInformationPage/IDCaseInformationPage.aspx
