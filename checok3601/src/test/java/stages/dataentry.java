@@ -19,7 +19,7 @@ public class dataentry {
 	public dataentry(WebDriver driver) {
 		this.driver = driver;
 	}
-
+//***************** search case no in data entry stage*************************
 	public void entry(String caseno) throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		WebElement ele = driver.findElement(By.id(locators.dropdown));
@@ -43,12 +43,12 @@ public class dataentry {
 		WebElement ref = driver.findElement(By.xpath(".//*[text()='" + caseno + "']"));
 		boolean casetatus = ref.isDisplayed();
 		if (casetatus) {
-			ref.click();
+			wait.until(ExpectedConditions.elementToBeClickable(ref)).click();
 		} else {
 			System.out.println("case not found");
 		}
 	}
-
+// *****************click and get all checks in the case**********************************
 	public List<String> getallchecks() throws InterruptedException {
 		List<WebElement> checklist = driver.findElements(By.xpath("//*[@class='rtsUL']/li/a/span/span/span"));
 		int checklenght = checklist.size();

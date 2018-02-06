@@ -19,6 +19,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
 import utility.locators;
 
 public class basicflow {
@@ -27,43 +32,57 @@ public class basicflow {
 	WebDriver driver;
 	deQC de;
 	dataentry dee;
+	ExtentReports extent;
+	ExtentTest logger;
+	
 
 	@BeforeTest
 	public void start() {
+		extent = new ExtentReports ("/home/ganesh/git/checok3601/reports/STMExtentReport.html", true);
+		extent
+        .addSystemInfo("Host Name", "check360")
+        .addSystemInfo("Environment", "Automation Testing")
+        .addSystemInfo("User Name", "gopinath N");
 		System.setProperty("webdriver.firefox.marionette", "/home/ganesh/Desktop/gopinath/driver/geckodriver");
+		  extent.loadConfig(new File("/home/ganesh/git/checok3601/reports/extent-config.xml"));
+		  logger = extent.startTest("start");
 		driver = new FirefoxDriver();
+		logger.log(LogStatus.PASS, "browser starting");
 		driver.get("http://192.168.2.17:99/Login.aspx");
+		logger.log(LogStatus.PASS, "application starting");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 	}
-
+// ********************login page*******************************
 	@Test(enabled = true, priority = 1)
 	public void login() throws InterruptedException {
+		logger = extent.startTest("login");
+		logger.log(LogStatus.PASS, "logging in");
 		driver.findElement(By.id(locators.Uname)).sendKeys("gopi");
 		driver.findElement(By.id(locators.pass)).sendKeys("gopi$123");
 		driver.findElement(By.id(locators.button)).click();
 		Thread.sleep(500);
 		boolean result = driver.findElement(By.id("ctl00_hlnkPasswordChange")).isDisplayed();
+		
 		assertTrue(result, "login failed check login details");
+		logger.log(LogStatus.PASS, "login successfull");
 
 	}
-
+// ******************data entry qc *********************************
 	@Test(enabled = false, priority = 2, dependsOnMethods = "login")
 	public void dataentryqc() throws InterruptedException {
 		de = new deQC(driver);
 		de.dataentryQC(caseno, name);
 		Thread.sleep(1000);
-		// String result = driver.findElement(By.xpath(".//*[text()='empone' AND
-		// @selected='selected']")).getText();
-		// System.out.println(result);
-		// Assert.assertEquals(name, result);
 
 	}
-
+//  **************************** data entry*********************
 	@Test(enabled = true, priority = 3)
 	public void dataentry() throws InterruptedException {
+		logger = extent.startTest("dataentry");
+		logger.log(LogStatus.PASS, "moves to data entry");
 		dee = new dataentry(driver);
 		dee.entry(caseno);
 		List<String> Listcheck = new ArrayList<String>();
@@ -77,15 +96,27 @@ public class basicflow {
 	    }
 	    driver.switchTo().defaultContent();
 	    Thread.sleep(500);
-	    driver.findElement(By.xpath("//*[text()='Address']")).click();
-	    driver.switchTo().frame(0);
-	    Thread.sleep(2000);
-	   Address.add(driver);
+	    System.out.println("check data : "+Listcheck);
+	    
+	    
+	    //********* swiching address frame************************
+	    
+	    
+	    switch ("Address") {
+		case "Address":
+			Address.click(driver);
+			break;
 
+		default:
+			break;
+		}
+	    
 	}
 	@AfterTest
 	public void close() throws InterruptedException {
 		Thread.sleep(6000);
-		// driver.close();
+		  extent.flush();
+		  //extent.close();
+		driver.close();
 	}
 }
