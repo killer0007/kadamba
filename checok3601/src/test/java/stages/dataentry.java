@@ -57,8 +57,9 @@ public class dataentry {
 		for (int i = 0; i < checklenght; i++) {
 			String title = checklist.get(i).getText();
 			data.add(title);
+			Thread.sleep(3000);
 		checklist.get(i).click();
-		Thread.sleep(3000);
+		
 			
 		}
 		// System.out.println(data);

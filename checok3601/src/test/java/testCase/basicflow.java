@@ -5,6 +5,13 @@ import static org.testng.Assert.assertTrue;
 import stages.dataentry;
 import stages.deQC;
 import pages.Address;
+import pages.Court;
+import pages.Credit;
+import pages.Criminal;
+import pages.DataBase;
+import pages.Education;
+import pages.Employement;
+import pages.Reference;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,8 +37,8 @@ public class basicflow {
 	public String caseno = "123000009";
 	public String name = "gopinathN";
 	WebDriver driver;
-	deQC de;
-	dataentry dee;
+	deQC qc;
+	dataentry dentry;
 	ExtentReports extent;
 	ExtentTest logger;
 	
@@ -73,8 +80,8 @@ public class basicflow {
 // ******************data entry qc *********************************
 	@Test(enabled = false, priority = 2, dependsOnMethods = "login")
 	public void dataentryqc() throws InterruptedException {
-		de = new deQC(driver);
-		de.dataentryQC(caseno, name);
+		qc = new deQC(driver);
+		qc.dataentryQC(caseno, name);
 		Thread.sleep(1000);
 
 	}
@@ -83,10 +90,11 @@ public class basicflow {
 	public void dataentry() throws InterruptedException {
 		logger = extent.startTest("dataentry");
 		logger.log(LogStatus.PASS, "moves to data entry");
-		dee = new dataentry(driver);
-		dee.entry(caseno);
+		dentry = new dataentry(driver);
+		dentry.entry(caseno);
 		List<String> Listcheck = new ArrayList<String>();
-		Listcheck = dee.getallchecks();
+		logger.log(LogStatus.PASS, "getting all checks");
+		Listcheck = dentry.getallchecks();
 		// driver.findElement(By.xpath("//*[text()='"+Listcheck.get(0)+"']")).click();
 		List<WebElement> ele = driver.findElements(By.tagName("iframe"));
 	    System.out.println("Number of frames in a page :" + ele.size());
@@ -105,8 +113,36 @@ public class basicflow {
 	    switch ("Address") {
 		case "Address":
 			Address.click(driver);
+			logger.log(LogStatus.PASS, "Address Check Passed");
 			break;
-
+		case "Education":
+			Education.click(driver);
+			logger.log(LogStatus.PASS, "Education Check Passed");
+			break;
+		case "Employment":
+			Employement.click(driver);
+			logger.log(LogStatus.PASS, "Employment Check Passed");
+			break;
+		case "Reference":
+			Reference.click(driver);
+			logger.log(LogStatus.PASS, "Reference Check Passed");
+			break;
+		case "DataBase":
+			DataBase.click(driver);
+			logger.log(LogStatus.PASS, "DataBase Check Passed");
+			break;
+		case "Criminal":
+			Criminal.click(driver);
+			logger.log(LogStatus.PASS, "Address Check Passed");
+			break;
+		case "Credit":
+			Credit.click(driver);
+			logger.log(LogStatus.PASS, "Credit Check Passed");
+			break;
+		case "Court":
+			Court.click(driver);
+			logger.log(LogStatus.PASS, "Court Check Passed");
+			break;
 		default:
 			break;
 		}
@@ -117,6 +153,6 @@ public class basicflow {
 		Thread.sleep(6000);
 		  extent.flush();
 		  //extent.close();
-		driver.close();
+		//driver.close();
 	}
 }

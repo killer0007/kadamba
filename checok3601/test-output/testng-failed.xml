@@ -5,7 +5,7 @@
     <classes>
       <class name="testCase.basicflow">
         <methods>
-          <include name="login"/>
+          <include name="close"/>
           <include name="start"/>
           <include name="dataentry"/>
         </methods>
