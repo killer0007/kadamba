@@ -9,8 +9,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import utility.FindElement;
+
 public class Credit {
 	WebDriver driver;
+	static FindElement elements;
 
 	// **********data entry for address check***********************
 	
@@ -51,8 +54,10 @@ public class Credit {
 
 	}
 	public static void adddata(WebDriver driver, int end, int endpoint) throws InterruptedException {
+		elements = new FindElement(driver);
+		
 		try {
-			WebElement drop = driver.findElement(By.id("ctl00_ContentPlaceHolder1_ddlCreditId_Input"));
+			WebElement drop = elements.find("ctl00_ContentPlaceHolder1_ddlCreditId_Input");
 			drop.sendKeys(Keys.ARROW_DOWN);
 			drop.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
@@ -60,10 +65,11 @@ public class Credit {
 			e.printStackTrace();
 		}
 		Thread.sleep(1000);
-		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtCreditIdName")).sendKeys("JUGUGJV");
-		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtCreditIdNumber")).sendKeys("9988776655");
 		
-		WebElement save = driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnCreditSaveSubmit_input"));
+		elements.find("ctl00_ContentPlaceHolder1_txtCreditIdName").sendKeys("JUGUGJV");
+		elements.find("ctl00_ContentPlaceHolder1_txtCreditIdNumber").sendKeys("9988776655");
+		
+		WebElement save = elements.find("ctl00_ContentPlaceHolder1_btnCreditSaveSubmit_input");
 		JavascriptExecutor je = (JavascriptExecutor)driver;
 		je.executeScript("arguments[0].scrollIntoView(true);", save);
 		save.click();
@@ -71,6 +77,7 @@ public class Credit {
 		
 		if (end == endpoint) {
 			driver.switchTo().defaultContent();
+			Thread.sleep(500);
 			driver.findElement(By.xpath("//*[@class='rwInnerSpan']")).click();
 			
 		} else {

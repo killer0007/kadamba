@@ -2,27 +2,27 @@
 <testng-results skipped="0" failed="1" total="2" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="32459" started-at="2018-02-08T14:17:51Z" finished-at="2018-02-08T14:18:23Z">
+  <suite name="Default suite" duration-ms="54748" started-at="2018-02-09T08:31:58Z" finished-at="2018-02-09T08:32:52Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="32459" started-at="2018-02-08T14:17:51Z" finished-at="2018-02-08T14:18:23Z">
+    <test name="Default test" duration-ms="54748" started-at="2018-02-09T08:31:58Z" finished-at="2018-02-09T08:32:52Z">
       <class name="testCase.basicflow">
-        <test-method status="PASS" signature="start()[pri:0, instance:testCase.basicflow@5e3a8624]" name="start" is-config="true" duration-ms="4279" started-at="2018-02-08T19:47:51Z" finished-at="2018-02-08T19:47:55Z">
+        <test-method status="PASS" signature="start()[pri:0, instance:testCase.basicflow@5e3a8624]" name="start" is-config="true" duration-ms="4338" started-at="2018-02-09T14:01:58Z" finished-at="2018-02-09T14:02:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- start -->
-        <test-method status="PASS" signature="login()[pri:0, instance:testCase.basicflow@5e3a8624]" name="login" duration-ms="1941" started-at="2018-02-08T19:47:55Z" finished-at="2018-02-08T19:47:57Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:testCase.basicflow@5e3a8624]" name="login" duration-ms="1956" started-at="2018-02-09T14:02:02Z" finished-at="2018-02-09T14:02:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="FAIL" signature="dataentry()[pri:0, instance:testCase.basicflow@5e3a8624]" name="dataentry" duration-ms="19878" started-at="2018-02-08T19:47:57Z" finished-at="2018-02-08T19:48:17Z">
-          <exception class="org.openqa.selenium.NoSuchElementException">
+        <test-method status="FAIL" signature="dataentry()[pri:0, instance:testCase.basicflow@5e3a8624]" name="dataentry" duration-ms="42137" started-at="2018-02-09T14:02:04Z" finished-at="2018-02-09T14:02:46Z">
+          <exception class="org.openqa.selenium.ElementNotVisibleException">
             <message>
-              <![CDATA[Unable to locate element: {"method":"xpath","selector":"//*[text()='Address']"}
+              <![CDATA[Element is not currently visible and so may not be interacted with
 Command duration or timeout: 0 milliseconds]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"xpath","selector":"//*[text()='Address']"}
+              <![CDATA[org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
 Command duration or timeout: 0 milliseconds
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
@@ -36,12 +36,11 @@ Command duration or timeout: 0 milliseconds
 	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:370)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
-	at pages.Address.click(Address.java:22)
-	at testCase.basicflow.dataentry(basicflow.java:115)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at pages.Address.adddata(Address.java:95)
+	at pages.Address.click(Address.java:33)
+	at testCase.basicflow.dataentry(basicflow.java:118)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -66,20 +65,21 @@ Command duration or timeout: 0 milliseconds
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"xpath","selector":"//*[text()='Address']"}
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
 Build info: version: '3.7.1', revision: '8a0099a', time: '2017-11-06T21:01:39.354Z'
 System info: host: 'PYR-SW-041', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '3.16.0-41-generic', java.version: '1.8.0_161'
 Driver info: driver.version: unknown
-	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///tmp/anonymous932162057095733277webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:11867)
-	at <anonymous class>.fxdriver.Timer.prototype.setTimeout/<.notify(file:///tmp/anonymous932162057095733277webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:918)
+	at <anonymous class>.fxdriver.preconditions.visible(file:///tmp/anonymous6402602278686628646webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11390)
+	at <anonymous class>.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous6402602278686628646webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:13344)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_/k(file:///tmp/anonymous6402602278686628646webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:13361)
+	at <anonymous class>.fxdriver.Timer.prototype.setTimeout/<.notify(file:///tmp/anonymous6402602278686628646webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:846)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          </exception> <!-- org.openqa.selenium.ElementNotVisibleException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- dataentry -->
-        <test-method status="PASS" signature="close()[pri:0, instance:testCase.basicflow@5e3a8624]" name="close" is-config="true" duration-ms="6339" started-at="2018-02-08T19:48:17Z" finished-at="2018-02-08T19:48:23Z">
+        <test-method status="PASS" signature="close()[pri:0, instance:testCase.basicflow@5e3a8624]" name="close" is-config="true" duration-ms="6297" started-at="2018-02-09T14:02:46Z" finished-at="2018-02-09T14:02:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- close -->

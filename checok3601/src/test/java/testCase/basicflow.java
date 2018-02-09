@@ -11,6 +11,7 @@ import pages.Criminal;
 import pages.DataBase;
 import pages.Education;
 import pages.Employement;
+import pages.Id;
 import pages.Reference;
 
 import java.io.File;
@@ -34,7 +35,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import utility.locators;
 
 public class basicflow {
-	public String caseno = "123000009";
+	public String caseno = "123000013";
 	public String name = "gopinathN";
 	WebDriver driver;
 	deQC qc;
@@ -110,41 +111,57 @@ public class basicflow {
 	    //********* swiching address frame************************
 	    
 	    
-	    switch ("Address") {
-		case "Address":
-			Address.click(driver);
-			logger.log(LogStatus.PASS, "Address Check Passed");
-			break;
-		case "Education":
-			Education.click(driver);
-			logger.log(LogStatus.PASS, "Education Check Passed");
-			break;
-		case "Employment":
-			Employement.click(driver);
-			logger.log(LogStatus.PASS, "Employment Check Passed");
-			break;
-		case "Reference":
-			Reference.click(driver);
-			logger.log(LogStatus.PASS, "Reference Check Passed");
-			break;
-		case "DataBase":
-			DataBase.click(driver);
-			logger.log(LogStatus.PASS, "DataBase Check Passed");
-			break;
-		case "Criminal":
-			Criminal.click(driver);
-			logger.log(LogStatus.PASS, "Address Check Passed");
-			break;
-		case "Credit":
-			Credit.click(driver);
-			logger.log(LogStatus.PASS, "Credit Check Passed");
-			break;
-		case "Court":
-			Court.click(driver);
-			logger.log(LogStatus.PASS, "Court Check Passed");
-			break;
-		default:
-			break;
+	    for (int i = 0; i < Listcheck.size(); i++) {
+			switch (Listcheck.get(i)) {
+			case "Address":
+				logger.log(LogStatus.PASS, "Address Check started");
+				Address.click(driver);
+				logger.log(LogStatus.PASS, "Address Check Passed");
+				break;
+			case "Education":
+				// for selecting education type
+				logger.log(LogStatus.PASS, "Education Check started");
+				Education.click(driver);
+				logger.log(LogStatus.PASS, "Education Check Passed");
+				break;
+			case "Employment":
+				logger.log(LogStatus.PASS, "Employment Check started");
+				Employement.click(driver);
+				logger.log(LogStatus.PASS, "Employment Check Passed");
+				break;
+			case "Reference":
+				logger.log(LogStatus.PASS, "Reference Check started");
+				Reference.click(driver);
+				logger.log(LogStatus.PASS, "Reference Check Passed");
+				break;
+			case "DataBase":
+				logger.log(LogStatus.PASS, "DataBase Check started");
+				DataBase.click(driver);
+				logger.log(LogStatus.PASS, "DataBase Check Passed");
+				break;
+			case "Criminal":
+				logger.log(LogStatus.PASS, "Criminal Check started");
+				Criminal.click(driver);
+				logger.log(LogStatus.PASS, "Address Check Passed");
+				break;
+			case "Credit":
+				logger.log(LogStatus.PASS, "Credit Check started");
+				Credit.click(driver);
+				logger.log(LogStatus.PASS, "Credit Check Passed");
+				break;
+			case "Court":
+				logger.log(LogStatus.PASS, "Court Check started");
+				Court.click(driver);
+				logger.log(LogStatus.PASS, "Court Check Passed");
+				break;
+			case "ID":
+				logger.log(LogStatus.PASS, "Id Check started");
+				Id.click(driver);
+				logger.log(LogStatus.PASS, "Id Check Passed");
+				break;
+			default:
+				break;
+			}
 		}
 	    
 	}

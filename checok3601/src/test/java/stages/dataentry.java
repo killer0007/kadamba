@@ -6,15 +6,18 @@ import java.util.List;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utility.FindElement;
 import utility.locators;
 
 public class dataentry {
 	WebDriver driver;
+	
 
 	public dataentry(WebDriver driver) {
 		this.driver = driver;
@@ -39,17 +42,26 @@ public class dataentry {
 		wait.until(ExpectedConditions.elementToBeClickable(ele1));
 		ele1.click();
 		Thread.sleep(1000);
-
+		
 		WebElement ref = driver.findElement(By.xpath(".//*[text()='" + caseno + "']"));
 		boolean casetatus = ref.isDisplayed();
 		if (casetatus) {
-			wait.until(ExpectedConditions.elementToBeClickable(ref)).click();
+			try {
+				ref.click();
+			} catch (WebDriverException e) {
+				Thread.sleep(1000);
+				ref.click();
+			}
+			finally {
+				System.out.println("element is not clickable");
+			}
 		} else {
 			System.out.println("case not found");
 		}
 	}
 // *****************click and get all checks in the case**********************************
 	public List<String> getallchecks() throws InterruptedException {
+		
 		List<WebElement> checklist = driver.findElements(By.xpath("//*[@class='rtsUL']/li/a/span/span/span"));
 		int checklenght = checklist.size();
 		//System.out.println(checklenght);

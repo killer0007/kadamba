@@ -9,8 +9,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import utility.FindElement;
+
 public class Court {
 	WebDriver driver;
+	static FindElement elements;
 
 	// **********data entry for address check***********************
 	
@@ -30,8 +33,6 @@ public class Court {
 	
 	// **********************get dropdown count in address check*********************
 	public static int add(WebDriver driver) throws InterruptedException {
-//		driver.findElement(By.id("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input")).click();
-//		Thread.sleep(500);
 		List<WebElement> drop = driver
 				.findElements(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtComponent_DropDown']/div/ul/li"));
 		int size = drop.size();
@@ -48,21 +49,21 @@ public class Court {
 		Thread.sleep(3000);
 
 		return dropsize;
-		//
 
 	}
 	public static void adddata(WebDriver driver, int end, int endpoint) throws InterruptedException {
 		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtCourtAddress")).sendKeys("plot no 1");
 		
+		elements= new FindElement(driver);
 		
-		WebElement state = driver.findElement(By.id("ctl00_ContentPlaceHolder1_ddlCourtState_Input"));
+		WebElement state = elements.find("ctl00_ContentPlaceHolder1_ddlCourtState_Input");
 		state.clear();
 		state.sendKeys("tam");
 		Thread.sleep(600);
 		state.sendKeys(Keys.ARROW_DOWN);
 		state.sendKeys(Keys.ENTER);
 		Thread.sleep(2000);
-		WebElement city = driver.findElement(By.id("ctl00_ContentPlaceHolder1_ddlCourtCity_Input"));
+		WebElement city = elements.find("ctl00_ContentPlaceHolder1_ddlCourtCity_Input");
 		city.clear();
 		city.sendKeys("chen");
 		Thread.sleep(700);
@@ -70,13 +71,14 @@ public class Court {
 		city.sendKeys(Keys.ENTER);
 		Thread.sleep(1000);
 		
-		WebElement save = driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnCourtSubmit_input"));
+		WebElement save = elements.find("ctl00_ContentPlaceHolder1_btnCourtSubmit_input");
 		JavascriptExecutor je = (JavascriptExecutor)driver;
 		je.executeScript("arguments[0].scrollIntoView(true);", save);
 		save.click();
 		Thread.sleep(1000);
 		if (end == endpoint) {
 			driver.switchTo().defaultContent();
+			Thread.sleep(500);
 			driver.findElement(By.xpath("//*[@class='rwInnerSpan']")).click();
 			
 		} else {
