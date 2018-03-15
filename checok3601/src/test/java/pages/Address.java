@@ -2,15 +2,10 @@ package pages;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.poi.hssf.record.PageBreakRecord.Break;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import utility.FindElement;
 
 public class Address {
@@ -39,7 +34,6 @@ public class Address {
 	
 	// **********************get dropdown count in address check*********************
 	public static int add(WebDriver driver) throws InterruptedException {
-		//driver.findElement(By.id("ctl00_ContentPlaceHolder1_ddlComponent_Input")).click();
 		List<WebElement> drop = driver
 				.findElements(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlComponent_DropDown']/div/ul/li"));
 		int size = drop.size();
@@ -50,14 +44,10 @@ public class Address {
 			System.out.println("data is :" + name);
 			dropdata.add(name);
 		}
-		// drop.get(0).click();
 		System.out.println(dropdata);
 		int dropsize = dropdata.size();
 		Thread.sleep(3000);
-
 		return dropsize;
-		//
-
 	}
 // *****************data entry in address check****************************88
 	public static void adddata(WebDriver driver, int end, int endpoint) throws InterruptedException {

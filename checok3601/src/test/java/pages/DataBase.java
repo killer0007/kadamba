@@ -1,14 +1,10 @@
 package pages;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import utility.FindElement;
 
 public class DataBase {
@@ -34,8 +30,6 @@ public class DataBase {
 			Thread.sleep(1000);
 			driver.switchTo().defaultContent();
 			driver.findElement(By.xpath("//*[@class='rwInnerSpan']")).click();
-	 	    
-	 	   
 	}
 	
 }

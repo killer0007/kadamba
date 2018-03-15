@@ -26,8 +26,6 @@ public class Employement {
 	 		}
 	}
 	public static int add(WebDriver driver) throws InterruptedException {
-		
-		//driver.findElement(By.id("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input")).click();
 		List<WebElement> drop = driver
 				.findElements(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul/li"));
 		int size = drop.size();
@@ -38,11 +36,9 @@ public class Employement {
 			System.out.println("data is :" + name);
 			dropdata.add(name);
 		}
-		// drop.get(0).click();
 		System.out.println(dropdata);
 		int dropsize = dropdata.size();
 		Thread.sleep(3000);
-
 		return dropsize;
 	}
 	public static void adddata(WebDriver driver, int end, int endpoint) throws InterruptedException {
@@ -58,7 +54,6 @@ public class Employement {
 		WebElement save = elements.find("ctl00_ContentPlaceHolder1_btnEmploymentSubmit_input");
 		JavascriptExecutor je = (JavascriptExecutor)driver;
 		je.executeScript("arguments[0].scrollIntoView(true);", save);
-		
 		save.click();
 		System.out.println("*******************************");
 		System.out.println("end is : "+end+"  " +"end point is :" +endpoint);

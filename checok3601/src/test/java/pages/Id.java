@@ -36,28 +36,20 @@ public class Id {
 			System.out.println("data is :" + name);
 			dropdata.add(name);
 		}
-		// drop.get(0).click();
 		System.out.println(dropdata);
 		int dropsize = dropdata.size();
 		Thread.sleep(3000);
-
 		return dropsize;
 	}
 	public static void adddata(WebDriver driver, int end, int endpoint) throws InterruptedException {
-		
 		elements = new FindElement(driver);
-			
 		elements.find("ctl00_ContentPlaceHolder1_txtIdName").sendKeys("ECFWERTEE");
 		elements.find("ctl00_ContentPlaceHolder1_txtIdNumber").sendKeys("59823479853");
-	
-		
-		
 		WebElement save = driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnIdSaveSubmit_input"));
 		JavascriptExecutor je = (JavascriptExecutor)driver;
 		je.executeScript("arguments[0].scrollIntoView(true);", save);
 		save.click();
 		Thread.sleep(1000);
-		
 		if (end == endpoint) {
 			driver.switchTo().defaultContent();
 			Thread.sleep(500);

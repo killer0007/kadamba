@@ -25,7 +25,6 @@ public class deQC {
 		sel.selectByIndex(1);
 		Thread.sleep(500);
 		driver.findElement(By.id(locators.search)).sendKeys(caseno);
-		// driver.findElement(By.id(locators.search)).sendKeys(keys.re);
 		Thread.sleep(2000);
 		WebElement ele1 = driver.findElement(By.id(locators.btn));
 		wait.until(ExpectedConditions.elementToBeClickable(ele1));
@@ -38,12 +37,10 @@ public class deQC {
 				WebElement element = driver.findElement(By.xpath(locators.priority));
 				Select sl = new Select(element);
 				String svalue = sl.getFirstSelectedOption().getText();
-
 				if (svalue.equals("Normal")) {
 					sl.selectByVisibleText("High");
 					Thread.sleep(500);
 					driver.findElement(By.xpath(locators.alert)).click();
-
 				} else {
 					System.out.println("state high already selected");
 				}
@@ -55,20 +52,13 @@ public class deQC {
 					System.out.println("entering loop");
 					Select sel1 = new Select(ell);
 					sel1.selectByVisibleText(names);
-
 					break;
-
-					// return true;
 				} else {
 					System.out.println("already assigned");
-
 				}
-
 			} else {
 				System.out.println("case not found");
-
 			}
 		}
-
 	}
 }

@@ -5,19 +5,15 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import utility.FindElement;
-
 public class Reference {
 	static FindElement elements;
 	public static void click (WebDriver driver) throws InterruptedException {
 		 driver.findElement(By.xpath("//*[text()='Reference']")).click();
 	 	    driver.switchTo().frame(3);
 	 	    Thread.sleep(2000);
-	 	    
 	 	    int addsize  = Reference.add(driver);
 	 	    int endpoint=addsize-2;
 	 	    System.out.println("size is : "+addsize +"\n"+"end point is :" +endpoint);
@@ -26,8 +22,6 @@ public class Reference {
 	 		}
 	}
 	public static int add(WebDriver driver) throws InterruptedException {
-		
-		driver.findElement(By.id("ctl00_ContentPlaceHolder1_ddlRefType_Input")).click();
 		List<WebElement> drop = driver
 				.findElements(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRefType_DropDown']/div/ul/li"));
 		int size = drop.size();
@@ -38,11 +32,9 @@ public class Reference {
 			System.out.println("data is :" + name);
 			dropdata.add(name);
 		}
-		// drop.get(0).click();
 		System.out.println(dropdata);
 		int dropsize = dropdata.size();
 		Thread.sleep(3000);
-
 		return dropsize;
 	}
 	public static void adddata(WebDriver driver, int end, int endpoint) throws InterruptedException {
@@ -54,7 +46,6 @@ public class Reference {
 		WebElement save = elements.find("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
 		JavascriptExecutor je = (JavascriptExecutor)driver;
 		je.executeScript("arguments[0].scrollIntoView(true);", save);
-		
 		save.click();
 		System.out.println("*******************************");
 		System.out.println("end is : "+end+"  " +"end point is :" +endpoint);

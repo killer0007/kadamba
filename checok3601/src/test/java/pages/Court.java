@@ -22,7 +22,6 @@ public class Court {
 		 driver.findElement(By.xpath("//*[text()='Court']")).click();
 	 	    driver.switchTo().frame(7);
 	 	    Thread.sleep(2000);
-	 	    
 	 	    int addsize  = Court.add(driver);
 	 	    int endpoint=addsize-2;
 	 	    System.out.println("size is : "+addsize +"\n"+"end point is :" +endpoint);
@@ -43,19 +42,16 @@ public class Court {
 			System.out.println("data is :" + name);
 			dropdata.add(name);
 		}
-		// drop.get(0).click();
 		System.out.println(dropdata);
 		int dropsize = dropdata.size();
 		Thread.sleep(3000);
-
 		return dropsize;
 
 	}
 	public static void adddata(WebDriver driver, int end, int endpoint) throws InterruptedException {
-		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtCourtAddress")).sendKeys("plot no 1");
 		
 		elements= new FindElement(driver);
-		
+		elements.find("ctl00_ContentPlaceHolder1_txtCourtAddress").sendKeys("plot no 1");
 		WebElement state = elements.find("ctl00_ContentPlaceHolder1_ddlCourtState_Input");
 		state.clear();
 		state.sendKeys("tam");
@@ -70,7 +66,6 @@ public class Court {
 		city.sendKeys(Keys.ARROW_DOWN);
 		city.sendKeys(Keys.ENTER);
 		Thread.sleep(1000);
-		
 		WebElement save = elements.find("ctl00_ContentPlaceHolder1_btnCourtSubmit_input");
 		JavascriptExecutor je = (JavascriptExecutor)driver;
 		je.executeScript("arguments[0].scrollIntoView(true);", save);
